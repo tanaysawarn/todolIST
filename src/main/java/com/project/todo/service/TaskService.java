@@ -2,7 +2,7 @@ package com.project.todo.service;
 
 
 import com.project.todo.model.Task;
-import com.project.todo.model.compositePk;
+import com.project.todo.model.CompositePk;
 import com.project.todo.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,7 @@ public class TaskService {
     }
 
     //Update existing task
-    public Task updateTask(compositePk pk, Task updatedTask){
+    public Task updateTask(CompositePk pk, Task updatedTask){
         return taskRepository.findById(pk).map(task -> {
             task.setTitle(updatedTask.getTitle());
             task.setCompleted(updatedTask.isCompleted());
@@ -36,7 +36,7 @@ public class TaskService {
     }
 
     //delete from task
-    public void deleteTask(compositePk pk){
+    public void deleteTask(CompositePk pk){
         taskRepository.deleteById(pk);
     }
 }
